@@ -123,6 +123,8 @@ $hesklang['enter_message']='Please enter your message';
 $hesklang['sel_app_cat']='Please select the appropriate category';
 $hesklang['sel_app_priority']='Please select the appropriate priority';
 $hesklang['enter_ticket_subject']='Please enter your ticket subject';
+$hesklang['reference_ticket_label']='Reference ticket (optional)';
+$hesklang['reference_ticket_not_found']='The referenced ticket could not be found.';
 $hesklang['user_not_found_nothing_edit']='User not found or nothing to change';
 
 // ADMIN PANEL
@@ -1130,6 +1132,7 @@ $hesklang['thist12']='<li class="smaller">%s | attachment %s deleted by %s</li>'
 $hesklang['thist13']='<li class="smaller">%s | merged with ticket %s by %s</li>'; // %s = date, merged ticket ID, user making change
 $hesklang['thist14']='<li class="smaller">%s | time worked updated to %s by %s</li>'; // %s = date, new time worked, user making change
 $hesklang['thist15']='<li class="smaller">%s | submitted by %s</li>';
+$hesklang['thist_reference_ticket']='<li class="smaller">%s | references ticket %s</li>';
 $hesklang['thist16']='<li class="smaller">%s | submitted by POP3 fetching</li>';
 
 // --> Knowledgebase articles log

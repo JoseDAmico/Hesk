@@ -108,6 +108,8 @@ $hesklang['enter_your_name']='Por favor indique su nombre';
 $hesklang['sel_app_cat']='Por favor seleccione la categoría apropiada';
 $hesklang['sel_app_priority']='Por favor seleccione la prioridad apropiada';
 $hesklang['enter_ticket_subject']='Por favor indique el asunto de su ticket';
+$hesklang['reference_ticket_label']='Ticket de referencia (opcional)';
+$hesklang['reference_ticket_not_found']='No se pudo encontrar el ticket de referencia.';
 $hesklang['user_not_found_nothing_edit']='Usuario no encontrado o nada que cambiar';
 
 // ADMIN PANEL
@@ -1031,6 +1033,7 @@ $hesklang['thist']='Historial de Tickets';
 $hesklang['thist13']='<li class="smaller">%s | fusionado con el ticket %s por %s</li>'; // %s = date, merged ticket ID, user making change
 $hesklang['thist14']='<li class="smaller">%s | tiempo trabajado actualizado a %s por %s</li>'; // %s = date, new time worked, user making change
 $hesklang['thist15']='<li class="smaller">%s | Enviado por %s</li>'; // %s = date, user making change
+$hesklang['thist_reference_ticket']='<li class="smaller">%s | hace referencia al ticket %s</li>';
 $hesklang['thist16']='<li class="smaller">%s | enviado por correo electrónico POP3</li>';
 $hesklang['twu']='Tiempo dedicado al ticket a sido actualizado.';
 $hesklang['autoss']='Inicio automático de temporizador al abrir un ticket';

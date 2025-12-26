@@ -238,6 +238,12 @@ require_once(HESK_PATH . 'inc/priorities.inc.php');
                                        value="<?php if (isset($_SESSION['c_subject'])) {echo stripslashes(hesk_input($_SESSION['c_subject']));} ?>"
                                        <?php if ($hesk_settings['require_subject']) { ?>required<?php } ?>>
                             </div>
+                            <div class="form-group">
+                                <label class="label" for="reference_ticket"><?php echo $hesklang['reference_ticket_label']; ?>:</label>
+                                <input type="text" id="reference_ticket" class="form-control <?php if (in_array('reference_ticket', $_SESSION['iserror'])) {echo 'isError';} ?>"
+                                       name="reference_ticket" maxlength="50"
+                                       value="<?php if (isset($_SESSION['c_reference_ticket'])) {echo stripslashes(hesk_input($_SESSION['c_reference_ticket']));} ?>">
+                            </div>
                             <?php
                         endif;
                         if ($hesk_settings['require_message'] != -1): ?>

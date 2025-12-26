@@ -290,6 +290,15 @@ else
     }
 }
 
+$tmpvar['reference_ticket'] = hesk_input(hesk_POST('reference_ticket'));
+if ($tmpvar['reference_ticket'] !== '') {
+    $reference_ticket_res = hesk_dbQuery("SELECT `trackid` FROM `" . hesk_dbEscape($hesk_settings['db_pfix']) . "tickets` WHERE `trackid` = '" . hesk_dbEscape($tmpvar['reference_ticket']) . "' LIMIT 1");
+
+    if (hesk_dbNumRows($reference_ticket_res) === 0) {
+        $hesk_error_buffer['reference_ticket'] = $hesklang['reference_ticket_not_found'];
+    }
+}
+
 if ($hesk_settings['require_message'] == -1)
 {
     $tmpvar['message'] = '';
@@ -506,6 +515,7 @@ if (count($hesk_error_buffer))
     $_SESSION['c_priority'] = hesk_POST('priority');
     $_SESSION['c_subject']  = hesk_POST('subject');
     $_SESSION['c_message']  = hesk_POST('message');
+    $_SESSION['c_reference_ticket'] = hesk_POST('reference_ticket');
     $_SESSION['c_followers'] = hesk_POST('follower_email');
 
     $tmp = '';
@@ -531,6 +541,10 @@ if (count($hesk_error_buffer))
     hesk_process_messages($hesk_error_buffer, 'index.php?a=add&category='.$tmpvar['category']);
 }
 
+if ($tmpvar['reference_ticket'] !== '') {
+    $tmpvar['message'] = $hesklang['reference_ticket_label'] . ': ' . $tmpvar['reference_ticket'] . "\n\n" . $tmpvar['message'];
+}
+
 $tmpvar['message'] = hesk_makeURL($tmpvar['message']);
 $tmpvar['message'] = nl2br($tmpvar['message']);
 $tmpvar['message_html'] = $tmpvar['message'];
@@ -544,6 +558,10 @@ if ($hesk_settings['kb_enable'] && $hesk_settings['kb_recommendanswers'] && isse
 // All good now, continue with ticket creation
 $tmpvar['owner']   = 0;
 $tmpvar['history'] = sprintf($hesklang['thist15'], hesk_date(), $hesklang['customer']);
+
+if ($tmpvar['reference_ticket'] !== '') {
+    $tmpvar['history'] .= sprintf($hesklang['thist_reference_ticket'], hesk_date(), addslashes($tmpvar['reference_ticket']));
+}
 
 // Auto assign tickets if aplicable
 $autoassign_owner = hesk_autoAssignTicket($tmpvar['category']);
@@ -636,6 +654,7 @@ hesk_cleanSessionVars('c_category');
 hesk_cleanSessionVars('c_priority');
 hesk_cleanSessionVars('c_subject');
 hesk_cleanSessionVars('c_message');
+hesk_cleanSessionVars('c_reference_ticket');
 hesk_cleanSessionVars('c_question');
 hesk_cleanSessionVars('c_attachments');
 hesk_cleanSessionVars('c_followers');
